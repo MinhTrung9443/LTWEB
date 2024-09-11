@@ -1,9 +1,9 @@
-package vn.iotstar.dao.impl;
+package vn.iotstar.services.impl;
 
 import vn.iotstar.dao.UserDao;
-import vn.iotstar.dao.UserService;
-
+import vn.iotstar.dao.impl.UserDaoImpl;
 import vn.iotstar.model.User;
+import vn.iotstar.services.UserService;
 
 public class UserServiceImpl implements UserService {
 	public UserDao userDao = new UserDaoImpl();

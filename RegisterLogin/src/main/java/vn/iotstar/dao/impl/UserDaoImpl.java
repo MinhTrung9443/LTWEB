@@ -8,8 +8,8 @@ import java.util.Random;
 
 import vn.iotstar.config.dbConnectionSQL;
 import vn.iotstar.dao.UserDao;
-import vn.iotstar.dao.UserService;
 import vn.iotstar.model.User;
+import vn.iotstar.services.UserService;
 
 public class UserDaoImpl implements UserDao {
 	public Connection conn = null;
@@ -52,24 +52,18 @@ public class UserDaoImpl implements UserDao {
 	}
 	@Override
 	public void insert(User user) {
-		int id ;
-		do {
-			Random random = new Random();
-	        id = 100000 + random.nextInt(900000);
-		}while(this.checkExistId(id) == true);
-		String sql = "INSERT INTO [User](id,email, username, fullname, password, avatar, roleid,phone,createdate) VALUES (?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO [User](email, username, fullname, password, avatar, roleid,phone,createdate) VALUES (?,?,?,?,?,?,?,?)";
 			try {
 			conn = new dbConnectionSQL().getConnection();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, id);
-			ps.setString(2, user.getEmail());
-			ps.setString(3, user.getUserName());
-			ps.setString(4, user.getFullName());
-			ps.setString(5, user.getPassWord());
-			ps.setString(6, user.getAvatar());
-			ps.setInt(7,user.getRoleid());
-			ps.setString(8,user.getPhone());
-			ps.setDate(9, user.getCreatedate());
+			ps.setString(1, user.getEmail());
+			ps.setString(2, user.getUserName());
+			ps.setString(3, user.getFullName());
+			ps.setString(4, user.getPassWord());
+			ps.setString(5, user.getAvatar());
+			ps.setInt(6,user.getRoleid());
+			ps.setString(7,user.getPhone());
+			ps.setDate(8, user.getCreatedate());
 			ps.executeUpdate();
 			} catch (Exception e) {e.printStackTrace();}
 	}

@@ -1,4 +1,4 @@
-package vn.iotstar.dao;
+package vn.iotstar.services;
 
 import vn.iotstar.model.User;
 
