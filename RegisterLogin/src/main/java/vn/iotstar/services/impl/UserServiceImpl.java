@@ -22,8 +22,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User get(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.findByUserName(username);
 	}
 	@Override
 	public void insert(User user) {
@@ -56,5 +55,10 @@ public class UserServiceImpl implements UserService {
 	
 	public boolean checkExistId(int id) {
 		return userDao.checkExistId(id);
+	}
+	@Override
+	public void changePassword(String username, String password) {
+		userDao.changePassword(username,password);
+		
 	}
 }

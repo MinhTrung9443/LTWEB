@@ -47,8 +47,7 @@ public class UserDaoImpl implements UserDao {
 	}
 	@Override
 	public User get(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.findByUserName(username);
 	}
 	@Override
 	public void insert(User user) {
@@ -136,5 +135,21 @@ public class UserDaoImpl implements UserDao {
 		conn.close();
 		} catch (Exception ex) {}
 		return duplicate;
+	}
+	@Override
+	public void changePassword(String username, String password) {
+		String query = "update [User] set password= ? where username= ?";
+		try {
+			conn = new dbConnectionSQL().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, password);
+			ps.setString(2, username);
+			ps.executeQuery();
+			ps.close();
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 }
