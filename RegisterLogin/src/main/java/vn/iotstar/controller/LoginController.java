@@ -1,7 +1,6 @@
 package vn.iotstar.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,7 +13,6 @@ import vn.iotstar.model.User;
 import vn.iotstar.services.UserService;
 import vn.iotstar.services.impl.UserServiceImpl;
 import vn.iotstar.ultis.Constant;
-import vn.iotstar.dao.impl.*;
 
 @WebServlet(urlPatterns = "/login")
 public class LoginController extends HttpServlet {
@@ -59,6 +57,7 @@ public class LoginController extends HttpServlet {
 		if ("on".equals(remember)) {
 			isRememberMe = true;
 		}
+
 		if (username.isEmpty() || password.isEmpty()) {
 			alertMsg = "Tài khoản hoặc mật khẩu không được rỗng";
 			req.setAttribute("alert", alertMsg);

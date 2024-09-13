@@ -2,7 +2,6 @@ package vn.iotstar.controller;
 
 import java.io.IOException;
 
-import org.eclipse.tags.shaded.org.apache.bcel.classfile.Constant;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,8 +10,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import vn.iotstar.dao.*;
-import vn.iotstar.dao.impl.*;
 import vn.iotstar.services.UserService;
 import vn.iotstar.services.impl.UserServiceImpl;
 
