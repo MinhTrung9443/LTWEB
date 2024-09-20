@@ -36,7 +36,7 @@ public class LogoutController extends HttpServlet{
 				
 			}
 		}
-		resp.sendRedirect("/RegisterLogin/views/login.jsp");
+		resp.sendRedirect("/RegisterLogin/views/topbar.jsp");
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
