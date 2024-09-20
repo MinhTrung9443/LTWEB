@@ -17,10 +17,11 @@
 	<div>Servlet Multipart</div>
 	<form method="post" action="/RegisterLogin/multiPartServlet"
 		enctype="multipart/form-data">
-		<label>Họ và tên</label><input type="text" name="fullname"><br>
-		<label>Số điện thoại</label><input type="text" name="phone"><br>
-		Choose a file: <input type="file" name="multiPartServlet" /> <input
-			type="submit" value="Upload" />
+		<label>Họ và tên</label> <input type="text" class="form-control"
+			name="fullname" id="fullname"> <br> <label>Số
+			điện thoại</label> <input type="text" class="form-control" name="phone"
+			id="phone"> <br> Choose a file: <input type="file"
+			name="multiPartServlet" /> <input type="submit" value="Upload" />
 	</form>
 	<br>
 	<!-- <div>Cloudary</div>

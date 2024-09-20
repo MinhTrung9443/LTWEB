@@ -4,12 +4,12 @@ package vn.iotstar.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Random;
+
 
 import vn.iotstar.config.dbConnectionSQL;
 import vn.iotstar.dao.UserDao;
 import vn.iotstar.model.User;
-import vn.iotstar.services.UserService;
+
 
 public class UserDaoImpl implements UserDao {
 	public Connection conn = null;
@@ -144,7 +144,7 @@ public class UserDaoImpl implements UserDao {
 			ps = conn.prepareStatement(query);
 			ps.setString(1, password);
 			ps.setString(2, username);
-			ps.executeQuery();
+			rs = ps.executeQuery();
 			ps.close();
 			conn.close();
 		}catch (Exception e) {
@@ -162,7 +162,7 @@ public class UserDaoImpl implements UserDao {
 			ps.setString(2, phone);
 			ps.setString(3, fileName);
 			ps.setString(4, userName);
-			ps.executeQuery();
+			rs = ps.executeQuery();
 			ps.close();
 			conn.close();
 		}catch (Exception e) {

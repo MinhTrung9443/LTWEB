@@ -52,7 +52,7 @@ public class UpLoadController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String fullname = request.getParameter("fullname");
+		String fullname =request.getParameter("fullname");
 		String phone = request.getParameter("phone");
 		String fileName = "";
 		String uploadPath = File.separator + Constant.UPLOAD_DIRECTORY; // upload vào thư mục bất kỳ
@@ -80,15 +80,20 @@ public class UpLoadController extends HttpServlet {
 			User u = (User)session.getAttribute("account");
 			
 			UserService serv = new UserServiceImpl();
+			u = serv.get(u.getUserName());
 			if (u != null)
 			{
-				if (!serv.checkExistPhone(phone)) {
-					serv.updateNPI(u.getUserName(),fullname,phone,fileName);
-					request.setAttribute("message", "File " + fileName + " has uploaded successfully!");
+				if (phone != "" && serv.checkExistPhone(phone)) {
+					request.setAttribute("message", "Số điện thoại đã tồn tại!!!");
 				}
 				else 
 				{
-					request.setAttribute("message", "Số điện thoại đã tồn tại!!!");
+					if (fullname.isEmpty())
+						fullname = u.getFullName();
+					if (phone.isEmpty())
+						phone = u.getPhone();
+					serv.updateNPI(u.getUserName(),fullname,phone,fileName);
+					request.setAttribute("message", "File " + fileName + " has uploaded successfully!" + fullname + phone);
 				}
 			}
 		
