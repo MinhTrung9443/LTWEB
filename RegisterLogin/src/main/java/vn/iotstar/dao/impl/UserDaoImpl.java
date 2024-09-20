@@ -152,4 +152,22 @@ public class UserDaoImpl implements UserDao {
 		}
 		
 	}
+	@Override
+	public void updateNPI(String userName, String fullname, String phone, String fileName) {
+		String query = "update [User] set fullname = ?, phone = ?, avatar = ? where username = ?";
+		try {
+			conn = new dbConnectionSQL().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, fullname);
+			ps.setString(2, phone);
+			ps.setString(3, fileName);
+			ps.setString(4, userName);
+			ps.executeQuery();
+			ps.close();
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 }

@@ -11,5 +11,6 @@ public interface UserDao {
 	User findByUserName(String username);
 	boolean checkExistId(int id);
 	void changePassword(String username, String password);
+	void updateNPI(String userName, String fullname, String phone, String fileName);
 
 }

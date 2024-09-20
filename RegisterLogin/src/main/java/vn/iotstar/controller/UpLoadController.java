@@ -10,7 +10,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
+import vn.iotstar.model.User;
+import vn.iotstar.services.UserService;
+import vn.iotstar.services.impl.UserServiceImpl;
 import vn.iotstar.ultis.Constant;
 
 @WebServlet(
@@ -47,7 +51,10 @@ public class UpLoadController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		String fullname = request.getParameter("fullname");
+		String phone = request.getParameter("phone");
+		String fileName = "";
 		String uploadPath = File.separator + Constant.UPLOAD_DIRECTORY; // upload vào thư mục bất kỳ
 
 		// String uploadPath = getServletContext().getRealPath("") + File.separator +
@@ -61,7 +68,6 @@ public class UpLoadController extends HttpServlet {
 
 		try {
 
-			String fileName = "";
 
 			for (Part part : request.getParts()) {
 
@@ -70,14 +76,30 @@ public class UpLoadController extends HttpServlet {
 				part.write(uploadPath + File.separator + fileName);
 
 			}
-
-			request.setAttribute("message", "File " + fileName + " has uploaded successfully!");
+			HttpSession session = request.getSession();
+			User u = (User)session.getAttribute("account");
+			
+			UserService serv = new UserServiceImpl();
+			if (u != null)
+			{
+				if (!serv.checkExistPhone(phone)) {
+					serv.updateNPI(u.getUserName(),fullname,phone,fileName);
+					request.setAttribute("message", "File " + fileName + " has uploaded successfully!");
+				}
+				else 
+				{
+					request.setAttribute("message", "Số điện thoại đã tồn tại!!!");
+				}
+			}
+		
 
 		} catch (FileNotFoundException fne) {
 
 			request.setAttribute("message", "There was an error: " + fne.getMessage());
 
 		}
+		
+		
 
 		getServletContext().getRequestDispatcher("/views/result.jsp").forward(request, response);
 

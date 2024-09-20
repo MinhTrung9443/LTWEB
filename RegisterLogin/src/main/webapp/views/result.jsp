@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<c:if test="${message != null}">
+		<h3 class="alert alertdanger">${message}</h3>
+	</c:if>
 </body>
 </html>

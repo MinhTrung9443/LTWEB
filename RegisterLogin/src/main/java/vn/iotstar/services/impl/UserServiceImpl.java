@@ -61,4 +61,9 @@ public class UserServiceImpl implements UserService {
 		userDao.changePassword(username,password);
 		
 	}
+	@Override
+	public void updateNPI(String userName, String fullname, String phone, String fileName) {
+		userDao.updateNPI(userName, fullname, phone, fileName);
+		
+	}
 }
