@@ -34,7 +34,7 @@
 					<li><a href="/RegisterLogin/views/upload.jsp">My Account</a></li>
 					<li><a href="shop-wishlist.html">My Wishlist</a></li>
 					<li><a href="shop-checkout.html">Checkout</a></li>
-					<li><a href="/RegisterLogin/login">Log In</a></li>
+					<li><a href="${pageContext.request.contextPath}/login">Log In</a></li>
 				</ul>
 			</div>
 
