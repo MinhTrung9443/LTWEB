@@ -97,6 +97,7 @@
 	<!-- END BEGIN STYLE CUSTOMIZER -->
 
 	<%@ include file="/commons/web/header.jsp"%>
+	
 	<div class="main">
 		<div class="container">
 			<sitemesh:write property="body" />
