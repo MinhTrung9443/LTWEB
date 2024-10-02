@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:url value="/" var="URL"></c:url>
 <div>
 	<ul>
@@ -231,8 +231,35 @@
 			<!-- END SIDEBAR -->
 			<!-- BEGIN CONTENT -->
 			<div class="col-md-9 col-sm-8">
-				<h2>Three items</h2>
+
+				<div style="height: 300px ; overflow-y: auto ; border: 1px solid #ccc;">
+				<table border="1" , width=100%>
+						<tr>
+							<th>STT</th>
+							<th>Icon</th>
+							<th>CategoryName</th>
+
+						</tr>
+						<c:forEach items="${listcate}" var="cate" varStatus="STT">
+							<tr>
+								<td>${STT.index+1 }</td>
+
+								<td><c:if test="${cate.icon.substring(0,5)  != 'https'}">
+										<c:url value="/image?fname=${cate.icon}" var="imgUrl"></c:url>
+									</c:if> <c:if test="${cate.icon.substring(0,5)  == 'https'}">
+										<c:url value="${cate.icon}" var="imgUrl"></c:url>
+									</c:if> <img height="150" width="200" src="${imgUrl}" /></td>
+								<td>${cate.cate_name }</td>
+
+							</tr>
+						</c:forEach>
+
+					</table>
+				</div>
+				
 				<div class="owl-carousel owl-carousel3">
+					
+					<!-- 
 					<div>
 						<div class="product-item">
 							<div class="pi-img-wrapper">
@@ -348,7 +375,7 @@
 							<div class="pi-price">$29.00</div>
 							<a href="#" class="btn btn-default add2cart">Add to cart</a>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<!-- END CONTENT -->
