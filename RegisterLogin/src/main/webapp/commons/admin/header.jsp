@@ -257,7 +257,7 @@
 							class="username username-hide-mobile">Nick</span>
 					</a>
 						<ul class="dropdown-menu dropdown-menu-default">
-							<li><a href="extra_profile.html"> <i class="icon-user"></i>
+							<li><a href="/RegisterLogin/views/admin/upload.jsp"> <i class="icon-user"></i>
 									My Profile
 							</a></li>
 							<li><a href="page_calendar.html"> <i
